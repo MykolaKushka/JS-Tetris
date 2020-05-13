@@ -70,8 +70,22 @@ let playfield = [
           }
         }
       }
+    } else {
+        fixTetro();
     }
   }
+
+  // Fix tetro
+  const fixTetro = () => {
+    for (let y in playfield) {
+        for (let x in playfield[y]) {
+        if (playfield[y][x] === 1) {
+          playfield[y][x] = 2;
+        }
+      }
+    }
+  }
+
 
   draw();
   
