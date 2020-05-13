@@ -42,6 +42,8 @@ let playfield = [
     }
 
     main.innerHTML = mainInnerHTML;
+
+    removeFullLines();
   }
 
 
@@ -133,6 +135,24 @@ const moveTetroRight = () => {
   }
 }
 
+
+const removeFullLines = () => {
+  let canRemoveLine = true;
+  for (let y = 19; y > 0; y--) {
+    for (let x = 0; x < playfield[y].length; x++) {
+      if (playfield[y][x] !== 2) {
+        canRemoveLine = false;
+      }
+    }
+    if (canRemoveLine) {      
+      playfield.splice(y, 1);
+      playfield.unshift(
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      );
+      draw();
+    }
+  }
+}
 
 
   // Fix tetro
